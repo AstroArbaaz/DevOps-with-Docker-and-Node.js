@@ -11,4 +11,8 @@ COPY . ./
 # expose the container to port 3000
 EXPOSE 3000
 # start server
-CMD [ "node", "server.js"]
+# raw command
+#CMD [ "node", "server.js"]
+# scripted command
+# CMD [ "npm", "run", "start"]
+CMD [ "npm", "run", "dev"]

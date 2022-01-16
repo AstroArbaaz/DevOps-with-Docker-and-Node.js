@@ -7,7 +7,7 @@ Create a "Dockerfile" in your project directory
 
 Enter this instructions into "Dockerfile"
 
-```
+```bash
 # Image Variant
 FROM node:16
 # working directory
@@ -21,14 +21,18 @@ COPY . ./
 # expose the container to port 3000
 EXPOSE 3000
 # start server
-CMD [ "node", "server.js"]
+# raw command
+#CMD [ "node", "server.js"]
+# scripted command
+# CMD [ "npm", "run", "start"]
+CMD [ "npm", "run", "dev"]
 ```
 
 create a ".dockerignore" file to ignore the files which are not needed when you build the docker image.
 
 Enter this file and directory names into ".dockerignore" file
 
-```
+```bash
 .git
 .gitignore
 .dockerignore
@@ -81,11 +85,38 @@ docker run -p 3000:3000 -d --name node-application node-image
 - "-d" means the container will run in detched mode
 - "--name" is used to name the container
 
+To Syncronize source code with read-only bind mode.
+
+```bash
+docker run -v <path-to-local-project-directory>:<path-to-docker-work-directory>:ro -v /app/node_modules -p <container-port>:<image-port> -d --name <give-a-name-to-the-container> <name-of-the-image>
+```
+
+- its a read-only bind mount that means any changes inside container will not affect the project repository in your local machine or main project file
+- "-v /app/node_modules" this will prevent the node_modules in the container to be untouched
+
+example :
+
+```bash
+docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name node-application node-image
+```
+
+- use "%cd%" a shortcut to mention the current directory in windows CMD
+- use ${pwd} a shortcut to mention the current directory in windows powershell
+- use $(pwd) a shortcut to mention the current directory in windows linux and Mac
+
 To view the running Docker Containers
 
 ```bash
 docker ps
 ```
+
+or 
+
+```bash
+docker ps -a
+```
+
+to see all the container which are running or not running
 
 To kill a running and delete running container
 
