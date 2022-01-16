@@ -1,0 +1,24 @@
+{
+  "name": "devops-with-docker-and-node",
+  "version": "1.0.0",
+  "description": "DevOps with Docker and Node.js/Express: Development to production workflow + mongo + redis",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AstroArbaaz/DevOps-with-Docker-and-Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AstroArbaaz/DevOps-with-Docker-and-Node.js/issues"
+  },
+  "homepage": "https://github.com/AstroArbaaz/DevOps-with-Docker-and-Node.js#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
