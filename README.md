@@ -104,6 +104,18 @@ docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name node-appl
 - use ${pwd} a shortcut to mention the current directory in windows powershell
 - use $(pwd) a shortcut to mention the current directory in windows linux and Mac
 
+To include the environment variable file
+
+```bash
+docker run -v <path-to-local-project-directory>:<path-to-docker-work-directory>:ro -v /app/node_modules --env-file ./.env -p <container-port>:<image-port> -d --name <give-a-name-to-the-container> <name-of-the-image>
+```
+
+example :
+
+```bash
+docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:3000 -d --name node-application node-image
+```
+
 To view the running Docker Containers
 
 ```bash
@@ -125,6 +137,15 @@ docker rm <container-name> -f
 ```
 
 - "-f" means Forcefull
+- use "-fv" to delete only the currenct running volume/image
+
+To delete the useless volumes / image
+
+- warning : never use this in production
+
+```bash
+docker volume prune
+```
 
 To view files in a docker container
 

@@ -8,8 +8,10 @@ COPY package.json .
 RUN npm install
 # copy all the source code to the working directory
 COPY . ./
+# set environment variable
+# ENV PORT 3000
 # expose the container to port 3000
-EXPOSE 3000
+EXPOSE $PORT
 # start server
 # raw command
 #CMD [ "node", "server.js"]
